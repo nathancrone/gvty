@@ -4,7 +4,11 @@
     ViewBag.Title = "Index";
 }
 
+<div class="row">
 @foreach (var item in Model)
 {
-    <h3>hello world</h3>
+    <div class="columns small-4 medium-2 large-1">
+        @Html.ActionLink(item.name, "Map", "Home", new { path = Server.UrlEncode(string.Format("{0}{1}", System.Configuration.ConfigurationManager.AppSettings["RootPrefix"], item.path)) }, new { @class = "button expanded" })
+    </div>
 }
+</div>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Assets/css/app.min.css">
+    @RenderSection("head", false)
 </head>
 <body>
 
@@ -16,6 +17,7 @@
     <script>
         $(document).foundation();
     </script>
+    @RenderSection("scripts", false)
 </body>
 </html>
 

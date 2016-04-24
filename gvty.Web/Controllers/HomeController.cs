@@ -21,7 +21,7 @@ namespace gvty.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            string prefix = "us752/en/CNT/{0}";
+            string prefix = ConfigurationManager.AppSettings["RootPrefix"];
 
             // Create the account
             CloudStorageAccount account = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
@@ -33,7 +33,7 @@ namespace gvty.Web.Controllers
             CloudBlobContainer blobContainer = blobClient.GetContainerReference("iocb");
 
             //get the listing
-            CloudBlockBlob blobList = blobContainer.GetBlockBlobReference(string.Format(prefix, "_list"));
+            CloudBlockBlob blobList = blobContainer.GetBlockBlobReference(string.Format("{0}{1}", prefix, "/_list"));
 
             string list = blobList.DownloadText();
 
@@ -41,5 +41,31 @@ namespace gvty.Web.Controllers
 
             return View(Territories);
         }
+
+
+        public ActionResult Map(string path)
+        {
+            // Create the account
+            CloudStorageAccount account = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureStorage"].ConnectionString);
+
+            // Create a blob client.
+            CloudBlobClient blobClient = account.CreateCloudBlobClient();
+
+            // Get a reference to a blob container.
+            CloudBlobContainer blobContainer = blobClient.GetContainerReference("iocb");
+
+            IEnumerable<IListBlobItem> blobItems = blobContainer.ListBlobs(Server.UrlDecode(path), true);
+
+            //Response.Write(blobItems.Count());
+
+
+
+            //get the listing
+            //CloudBlockBlob blobList = blobContainer.GetBlockBlobReference();
+
+
+            return View();
+        }
+
     }
 }
