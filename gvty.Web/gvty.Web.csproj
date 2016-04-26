@@ -266,6 +266,7 @@
     <Content Include="Assets\css\motion-ui\_classes.scss" />
     <Content Include="Assets\css\motion-ui\_settings.scss" />
     <Content Include="Assets\css\app.scss" />
+    <Content Include="Assets\test.kml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

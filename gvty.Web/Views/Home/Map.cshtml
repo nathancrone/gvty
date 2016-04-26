@@ -27,7 +27,6 @@
     
     <div id="mapDiv"></div>
 
-
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNdTK4h8OHtrdSa8NPy5ldvQ8Pasng-Ns"></script>
     <script type="text/javascript">
         function init() {
@@ -41,11 +40,13 @@
 
         function addKmlLayer(map) {
             var layer = new google.maps.KmlLayer("http://hikeview.co.uk/tracks/hikeview-offas-dyke.kml");
+            //var layer = new google.maps.KmlLayer('@Url.Action("Kml")');
             layer.setMap(map);
         }
 
         google.maps.event.addDomListener(window, "load", init);
     </script>
+
 </body>
 </html>
 
