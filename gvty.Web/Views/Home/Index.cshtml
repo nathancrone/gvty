@@ -5,10 +5,24 @@
 }
 
 <div class="row">
+@{ 
+    int index = 0;
+}
 @foreach (var item in Model)
 {
-    <div class="columns small-4 medium-2 large-1">
+    List<string> classes = new List<string>();
+    classes.Add("columns");
+    classes.Add("small-4");
+    classes.Add("medium-2");
+    classes.Add("large-1");
+    if (index == Model.Count() - 1)
+    {
+        classes.Add("end");
+    }
+
+    <div class="@string.Join(" ", classes.ToArray())">
         @Html.ActionLink(item.name, "Map", "Home", new { path = Server.UrlEncode(string.Format("{0}{1}", System.Configuration.ConfigurationManager.AppSettings["RootPrefix"], item.path)) }, new { @class = "button expanded" })
     </div>
+    index++;
 }
 </div>
