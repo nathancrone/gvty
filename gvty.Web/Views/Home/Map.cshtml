@@ -39,8 +39,7 @@
         }
 
         function addKmlLayer(map) {
-            var layer = new google.maps.KmlLayer("http://hikeview.co.uk/tracks/hikeview-offas-dyke.kml");
-            //var layer = new google.maps.KmlLayer('@Url.Action("Kml")');
+            var layer = new google.maps.KmlLayer('@Url.Action("Kml", null, null, Request.Url.Scheme)?path=@Request.QueryString["path"]');
             layer.setMap(map);
         }
 
